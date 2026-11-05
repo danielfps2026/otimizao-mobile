@@ -12,6 +12,11 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
+      - name: Organizar arquivos
+        run: |
+          mkdir -p src
+          cp MainActivity.kt src/
+          sed -i 's|setSrcDirs(listOf("."))|setSrcDirs(listOf("src"))|' build.gradle.kts
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: 8.7
